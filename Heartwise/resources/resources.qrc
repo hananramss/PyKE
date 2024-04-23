@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="logo">
+    <file>resources/heartwise.svg</file>
+    <file>resources/sendIcon.svg</file>
+  </qresource>
+</RCC>
