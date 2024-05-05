@@ -6,7 +6,7 @@ import time
 from pyke import knowledge_engine
 from pyke import krb_traceback, goal
 import sys
-# import PySimpleGUI as sg
+import PySimpleGUI as sg
 
 engine = knowledge_engine.engine(__file__)
 fc_goal = goal.compile('symptoms.diagnosis($diagnosis)')
@@ -45,64 +45,100 @@ def Diagnosis_rules():
 
 
 # Diagnosis_rules()
-#GUI code done but weren't able to link it with the knowledge base files !
-# sg.theme("dark grey 10")
-# layout=[
-#     [
-#         [
-#             sg.Text("Do you experience shortness of breath?")
-#         ],
-#         [
-#             sg.Button("Yes")
-#         ],
-#         [
-#             sg.Button("No")
-#         ],
-# [
-#             sg.Text("Do you experience fatigue?")
-#         ],
-#         [
-#             sg.Button("Yes")
-#         ],
-#         [
-#             sg.Button("No")
-#         ],
-# [
-#             sg.Text("Do you experience chest pain?")
-#         ],
-#         [
-#             sg.Button("Yes")
-#         ],
-#         [
-#             sg.Button("No")
-#         ],
-# [
-#             sg.Text("Do feel fluttering in your chest?")
-#         ],
-#         [
-#             sg.Button("Yes")
-#         ],
-#         [
-#             sg.Button("No")
-#         ],
-# [
-#             sg.Text("Is your heart beat slower than normal?")
-#         ],
-#         [
-#             sg.Button("Yes")
-#         ],
-#         [
-#             sg.Button("No")
-#         ]
-#     ]
-# ]
-#Create a window
-# window = sg.Window ("Expert Heart Deasieases System", layout, size=(300, 300))
-# while True:
-#     event, values = window.read()
-#     print(event)
-#     if event == sg.WIN_CLOSED:
-#         break
 
-# window.close()
-# exit()
+light_gray = "#FAFAFA"
+maroon = "#800000"
+
+sg.theme("LightGrey1")
+layout = [
+    [sg.Text("", key="-HEADER-")],
+    [sg.Column([
+        [sg.Frame(
+            "", 
+            layout=[
+                [sg.Text(
+                    "  Hello! I'm",
+                    font=("Poppins", 10)), 
+                 sg.Text(
+                    "Heartwise", 
+                    font=("Poppins", 10, "bold"),
+                    pad=(10,10)), 
+                 sg.Text(
+                    "- your Elderly Heart Health Assistant!  ",
+                    font=("Helvetica", 10)
+                )]
+            ], 
+            key="-INTRO-", 
+            pad=(15,0), 
+            background_color=light_gray,
+            border_width=2,
+        )],
+        [sg.Frame(
+            "", 
+            layout=[
+                [sg.Text(
+                    " Let's Start! ", 
+                    font=("Poppins", 10), 
+                    pad=(10,10)
+                )]
+            ], 
+            key="-START-", 
+            pad=(15,10), 
+            border_width=2,
+            background_color=light_gray,
+        )],
+        [sg.Frame(
+            "Question 1", 
+            layout=[
+                [sg.Text(
+                    "Do you experience shortness of breath?", 
+                    pad=(8,8)
+                )],
+                [sg.Button(
+                    "  Yes, I have  ",
+                    pad=(10,10)), 
+                 sg.Button(
+                    "  Nope  ",
+                    pad=(0,10),
+                    button_color=('white', maroon)
+                )]
+            ], 
+            key="-Q1-", 
+            pad=(15, 5), 
+            background_color=light_gray,
+            border_width=2,
+        )],
+        [sg.Text("", size=(1, 12))],
+        [sg.Frame(
+            "Input", 
+            layout=[
+                [sg.InputText(
+                    "Type your response here...",
+                    pad=(10, 10),  
+                    background_color=light_gray,
+                    border_width=0,
+                    font=("Helvetica", 9),
+                    size=(60, 1)
+                )],
+                [sg.Button(
+                    "  Send  ",
+                    pad=(10)
+                )]
+            ], 
+            key="-INPUT-", 
+            pad=(15, 5), 
+            background_color=light_gray,
+            border_width=2,
+        )],
+        [sg.Text("", key="-FOOTER-", size=(1, 10))],
+    ], vertical_scroll_only=True)]
+]
+
+window = sg.Window("Heartwise", layout, finalize=True, size=(450, 600))
+
+while True:
+    event, values = window.read()
+    if event == sg.WIN_CLOSED:
+        break
+
+window.close()
