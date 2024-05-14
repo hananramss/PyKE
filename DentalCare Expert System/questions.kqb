@@ -93,3 +93,35 @@ use_mouthwash($ans)
 #---------------------------------------------------------------
 
 
+#PreImplantitis Questions
+
+is_pain($ans)
+	Can you feel pain or discomfort in the area where the dental implant is intended to be placed?
+ 	---
+ 	$ans = yn
+
+is_swelling($ans)
+	Do you notice swelling of the gums or surrounding tissues in the implant area?
+ 	---
+ 	$ans = yn
+
+is_redness($ans)
+	Are the gums around the implant site red or inflamed?
+ 	---
+ 	$ans = yn
+
+is_bleeding($ans)
+	Do your gums bleed easily, especially when brushing or flossing around the implant area?
+ 	---
+ 	$ans = yn
+
+is_pus($ans)
+	Have you noticed any pus or discharge present around the implant site?
+ 	---
+ 	$ans = yn
+
+is_gum_recession($ans)
+	Have you observed gum recession around the implant site?
+ 	---
+ 	$ans = yn
+
