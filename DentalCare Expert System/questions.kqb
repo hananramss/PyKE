@@ -1,0 +1,95 @@
+#Dental Abscess Questions
+
+gums_swollen($ans)
+	Are your gums become red and swollen?
+	---
+	$ans = yn
+
+gums_painful($ans)
+	Are your gums painful?
+	---
+	$ans = yn
+
+intake_medicine($ans)
+	Do you take any medicine like Mefenamic Acid?
+	---
+	$ans = yn
+
+intake_medicine_effective($ans)
+	Is the medicine effective?
+	---
+	$ans = yn
+
+
+#---------------------------------------------------------------
+
+
+#Periodontal Diseases Questions
+
+gums_bleeding($ans)
+	Do your gums bleed easily?
+ 	---
+ 	$ans = yn
+
+gums_pull_away_from_the_teeth($ans)
+    Do the gums pull away from the teeth and form pockets that become infected?
+    ---
+    $ans = yn
+
+
+#---------------------------------------------------------------
+
+
+#Dental Cavity or Caries Questions
+
+tooth_holes($ans)
+	Do you have visible holes or pits in the teeth?
+ 	---
+ 	$ans = yn
+
+tooth_discoloration($ans)
+	Have you observed any dark spots or discoloration on the surface of your tooth?
+ 	---
+ 	$ans = yn
+
+tooth_sensitive($ans)
+	Are you sensitive to hot, cold, or sweet foods and drinks?
+ 	---
+ 	$ans = yn
+
+toothache($ans)
+	Do you experience toothache or tooth pain, particularly when eating or drinking something sweet, hot, or cold?
+	---
+ 	$ans = yn
+
+toothache_duration($ans)
+	Does the pain exist for more than 1 hour? 
+ 	---
+ 	$ans = yn
+
+
+#---------------------------------------------------------------
+
+
+#Discoloration of Teeth Questions
+
+smoke_tobacco($ans)
+	Do you always smoke and chew tobacco?
+ 	---
+ 	$ans = yn
+
+drink_black_tea($ans)
+	Do you always drink coffee, black tea, red wine, etc? 
+ 	---
+ 	$ans = yn
+
+use_mouthwash($ans)
+	Do you use mouthwash that contains chlorhexidine and cetylpyridinium chloride?
+ 	---
+ 	$ans = yn
+
+
+
+#---------------------------------------------------------------
+
+

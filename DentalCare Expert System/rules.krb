@@ -1,0 +1,147 @@
+#Periodontal Diseases Rules
+
+periodontal_disease_gingivitis_rule1
+    use periodontal(Gingivitis)
+    when
+        questions.gums_swollen(True)
+
+periodontal_disease_gingivitis_rule2
+    use periodontal(Gingivitis)
+    when
+        questions.gums_bleeding(True)
+
+periodontal_disease_not_gingivitis_rule3
+    use periodontal(not_Gingivitis)
+    when
+        questions.gums_swollen(False)
+        questions.gums_bleeding(False)
+
+periodontal_disease_gingivitis_rule4
+    use periodontal(Gingivitis)
+    when
+        questions.gums_swollen(True)
+        questions.gums_bleeding(True)
+
+periodontal_disease_periodontitis_rule5
+    use periodontal(periodontitis)
+    when
+        questions.gums_bleeding(True)
+        questions.gums_pull_away_from_the_teeth(True)
+
+periodontal_disease_not_periodontitis_rule6
+    use periodontal(not_periodontitis)
+    when
+        questions.gums_bleeding(False)
+        questions.gums_pull_away_from_the_teeth(False)
+
+
+
+#Dental Abscess Rules------------------------------------------------
+
+dental_abscess_rule1
+    use dental_abscess("\nYou have a high possibility of having a dental abscess.")
+    when    
+        questions.gums_swollen(True)
+        questions.gums_painful(True)
+        questions.intake_medicine(True)
+        questions.intake_medicine_effective(False)  
+
+dental_abscess_rule2
+    use dental_abscess("\nYou don't have a dental abscess.")
+    when    
+        questions.gums_swollen(False)
+        questions.gums_painful(False) 
+
+
+
+#Dental Cavity or Caries Rules------------------------------------------------
+
+dental_cavity_rule1
+    use dental_cavity("\nThis indicates an early-stage tooth decay or a cavity. Tooth decay can begin as a small, white spot on the tooth surface, which may not be immediately noticeable. As the decay progresses, it can eventually form a hole or pit in the tooth.")
+    when    
+        questions.tooth_holes(True)
+        questions.tooth_discoloration(False) 
+
+dental_cavity_rule2
+    use dental_cavity("\nThis indicates that dental decay has progressed to a moderate stage. The decay is progressing and requires prompt attention from a dentist. It's essential to seek professional dental care to assess the extent of the decay and determine the appropriate treatment to prevent further damage to the tooth. Regular dental check-ups are crucial for detecting and addressing dental issues in their early stages.")
+    when    
+        questions.tooth_holes(True)
+        questions.tooth_discoloration(False)    
+        questions.tooth_sensitive(True)
+        questions.toothache(False) 
+        questions.toothache_duration(False) 
+
+dental_cavity_rule3
+    use dental_cavity("\nThis indicates the presence of early-stage dental decay or enamel erosion. It's essential to address sensitivity and seek professional dental care to prevent further damage to the tooth enamel and underlying structures. Regular dental check-ups are crucial for detecting and addressing dental issues in their early stages.")
+    when    
+        questions.tooth_holes(False)
+        questions.tooth_discoloration(False)    
+        questions.tooth_sensitive(True)
+        questions.toothache(False) 
+        questions.toothache_duration(False) 
+
+dental_cavity_rule4
+    use dental_cavity("\nThis indicates advanced dental decay or cavity formation. It's essential to seek prompt professional dental care to assess the extent of the decay and determine the appropriate treatment to prevent further damage to the tooth. Delaying treatment can lead to worsening pain, infection, and potentially the loss of the affected tooth. Regular dental check-ups are crucial for detecting and addressing dental issues in their early stages.")
+    when    
+        questions.tooth_holes(True)
+        questions.tooth_discoloration(False)    
+        questions.tooth_sensitive(True)
+        questions.toothache(True) 
+        questions.toothache_duration(True) 
+
+dental_cavity_rule5
+    use dental_cavity("\nThis indicates an advanced dental decay or cavity formation. It's essential to seek prompt professional dental care to assess the extent of the decay and determine the appropriate treatment to prevent further damage to the tooth. Delaying treatment can lead to worsening pain, infection, and potentially the loss of the affected tooth. Regular dental check-ups are crucial for detecting and addressing dental issues in their early stages.")
+    when    
+        questions.tooth_holes(True)
+        questions.tooth_discoloration(True)    
+        questions.tooth_sensitive(True)
+        questions.toothache(True) 
+        questions.toothache_duration(True) 
+        
+dental_cavity_rule6
+    use dental_cavity("\nNo Dental Cavity Detected")
+    when    
+        questions.tooth_holes(False)
+        questions.tooth_discoloration(False)    
+        questions.tooth_sensitive(False)
+        questions.toothache(False) 
+        questions.toothache_duration(False) 
+
+
+#Discoloration of Teeth Rules------------------------------------------------
+
+discolorations_rule1
+    use discoloration("\nSmoke and chewing tobacco can possibly be the reason of your discoloration teeth")
+    when    
+        questions.smoke_tobacco(True)
+
+discolorations_rule2
+    use discoloration("\nDrinking black drinks can possibly be the reason of your discoloration teeth")
+    when    
+        questions.drink_black_tea(True)
+
+discolorations_rule3
+    use discoloration("\nUsing mouthwash with chlorhexidine and cetylpyridinium chloride can possibly be the reason of your discoloration teeth")
+    when    
+        questions.use_mouthwash(True)
+
+discolorations_rule4
+    use discoloration("\nIf the user smokes and chews tobacco but does not consume other staining substances or use specific mouthwashes, their tooth discoloration is most likely due to tobacco use. Regular brushing, flossing, and dental check-ups are essential to mitigate some discoloration. However, quitting smoking and tobacco use is the most effective way to prevent further staining and improve oral health.")
+    when    
+        questions.smoke_tobacco(True)
+        questions.drink_black_tea(False)
+        questions.use_mouthwash(False)
+
+discolorations_rule5
+    use discoloration("\nPreventive Measures: \n\n Rinse After Drinking: Rinse your mouth with water after consuming staining beverages to reduce pigment contact. \n Use a Straw: Drinking through a straw minimizes contact between beverages and your teeth. \n Brush and Floss Regularly: Brush twice a day and floss daily for good oral hygiene. \n Regular Dental Cleanings: Visit your dentist regularly for professional cleanings to remove surface stains and prevent discoloration. \n\n By following these measures, you can reduce the staining effects of beverages on your teeth.")
+    when    
+        questions.smoke_tobacco(False)
+        questions.drink_black_tea(True)
+        questions.use_mouthwash(False)
+
+discolorations_rule6
+    use discoloration("\nNo Discoloration of Teeth Detected")
+    when    
+        questions.smoke_tobacco(False)
+        questions.drink_black_tea(False)
+        questions.use_mouthwash(False)
