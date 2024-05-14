@@ -38,7 +38,7 @@ def periodontal_diseases():
     except Exception as e:
         print("An error occurred:", e)
     if not gingivitis_found:
-        display_result("No Gingivitis detected.\n\n")
+        display_result("No Periodontal detected.\n\n")
 
 # Function to handle dental abscess
 def dental_abscess():
@@ -75,6 +75,18 @@ def discoloration_teeth():
             display_result("Discoloration Teeth Advice:\n" + "\n".join(advice) + "\n\n")
     except Exception:
         krb_traceback.print_exc()
+        
+# Function to handle tooth discoloration
+def pre_Implantitis():
+    engine.reset()
+    engine.activate('rules')
+    try:
+        # Prove the goal related to tooth discoloration
+        with engine.prove_goal('rules.pre_implantitis($bring)') as gen:
+            advice = [vars['bring'] for vars, _ in gen]
+            display_result("PreImplantitis Advice:\n" + "\n".join(advice) + "\n\n")
+    except Exception:
+        krb_traceback.print_exc()
 
 # Function to handle selection of dental condition
 def on_condition_selected():
@@ -88,6 +100,9 @@ def on_condition_selected():
         dental_cavity_caries()
     elif numper_disease == 4:
         discoloration_teeth()
+    elif numper_disease == 5:
+        pre_Implantitis()
+        
 
 # Function to display result
 def display_result(result):
@@ -104,14 +119,15 @@ def submit_name_age():
     age = age_var.get()
     greeting_label.config(text=f"Hi {name}, you are {age} years old!", font=font_3)
     submit_button.pack_forget()
-    tk.Label(root, text="Now, let's talk about your dental concerns.", font=font_4).place(relx=0.5, rely=0.60, anchor='n')
-    tk.Label(root, text="Which dental issue are you experiencing?", font=font_4).place(relx=0.5, rely=0.65, anchor='n')
+    tk.Label(root, text="Now, let's talk about your dental concerns.", font=font_4).place(relx=0.5, rely=0.55, anchor='n')
+    tk.Label(root, text="Which dental issue are you experiencing?", font=font_4).place(relx=0.5, rely=0.60, anchor='n')
     global selected_disease
     selected_disease = tk.StringVar(root, "1")
-    tk.Radiobutton(root, text="Periodontal Disease", variable=selected_disease, value="1", font=font_4).place(relx=0.4, rely=0.70, anchor='n')
-    tk.Radiobutton(root, text="Dental Abscess", variable=selected_disease, value="2", font=font_4).place(relx=0.38, rely=0.75, anchor='n')
-    tk.Radiobutton(root, text="Teeth Cavity/Caries", variable=selected_disease, value="3", font=font_4).place(relx=0.4, rely=0.80, anchor='n')
-    tk.Radiobutton(root, text="Discoloration Teeth", variable=selected_disease, value="4", font=font_4).place(relx=0.4, rely=0.85, anchor='n')
+    tk.Radiobutton(root, text="Periodontal Disease", variable=selected_disease, value="1", font=font_4).place(relx=0.4, rely=0.65, anchor='n')
+    tk.Radiobutton(root, text="Dental Abscess", variable=selected_disease, value="2", font=font_4).place(relx=0.38, rely=0.70, anchor='n')
+    tk.Radiobutton(root, text="Teeth Cavity/Caries", variable=selected_disease, value="3", font=font_4).place(relx=0.4, rely=0.75, anchor='n')
+    tk.Radiobutton(root, text="Discoloration Teeth", variable=selected_disease, value="4", font=font_4).place(relx=0.4, rely=0.80, anchor='n')
+    tk.Radiobutton(root, text="Pre-Implantitis", variable=selected_disease, value="5", font=font_4).place(relx=0.37, rely=0.85, anchor='n')
     submit_button_2 = tk.Button(root, text="Proceed", command=on_condition_selected)
     submit_button_2.place(relx=0.5, rely=0.91, anchor='n')
 
