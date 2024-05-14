@@ -44,26 +44,34 @@ dental_abscess_rule1
         questions.gums_swollen(True)
         questions.gums_painful(True)
         questions.intake_medicine(True)
-        questions.intake_medicine_effective(False)  
+        questions.intake_medicine_effective(True)  
 
 dental_abscess_rule2
-    use dental_abscess("\nYou don't have a dental abscess.")
+    use dental_abscess("\nYou have a possibility of having a dental abscess.")
+    when    
+        questions.gums_swollen(True)
+        questions.gums_painful(True)
+        questions.intake_medicine(True)
+        questions.intake_medicine_effective(False)  
+
+dental_abscess_rule4
+    use dental_abscess("\nNo Dental Abscess Detected")
     when    
         questions.gums_swollen(False)
-        questions.gums_painful(False) 
-
-
+        questions.gums_painful(False)
+        questions.intake_medicine(False)
+        questions.intake_medicine_effective(False)  
 
 #Dental Cavity or Caries Rules------------------------------------------------
 
 dental_cavity_rule1
-    use dental_cavity("\nThis indicates an early-stage tooth decay or a cavity. Tooth decay can begin as a small, white spot on the tooth surface, which may not be immediately noticeable. As the decay progresses, it can eventually form a hole or pit in the tooth.")
+    use dental_cavity("\nThis indicates an early-stage tooth decay or a cavity. \nTooth decay can begin as a small, white spot on the tooth surface, which may not be immediately noticeable. \nAs the decay progresses, it can eventually form a hole or pit in the tooth.")
     when    
         questions.tooth_holes(True)
         questions.tooth_discoloration(False) 
 
 dental_cavity_rule2
-    use dental_cavity("\nThis indicates that dental decay has progressed to a moderate stage. The decay is progressing and requires prompt attention from a dentist. It's essential to seek professional dental care to assess the extent of the decay and determine the appropriate treatment to prevent further damage to the tooth. Regular dental check-ups are crucial for detecting and addressing dental issues in their early stages.")
+    use dental_cavity("\nThis indicates that dental decay has progressed to a moderate stage. \nThe decay is progressing and requires prompt attention from a dentist. \nIt's essential to seek professional dental care to assess the extent of the \ndecay and determine the appropriate treatment to prevent further damage to the tooth. \nRegular dental check-ups are crucial for detecting and addressing dental issues in their early stages.")
     when    
         questions.tooth_holes(True)
         questions.tooth_discoloration(False)    
@@ -72,7 +80,7 @@ dental_cavity_rule2
         questions.toothache_duration(False) 
 
 dental_cavity_rule3
-    use dental_cavity("\nThis indicates the presence of early-stage dental decay or enamel erosion. It's essential to address sensitivity and seek professional dental care to prevent further damage to the tooth enamel and underlying structures. Regular dental check-ups are crucial for detecting and addressing dental issues in their early stages.")
+    use dental_cavity("\nThis indicates the presence of early-stage dental decay or enamel erosion. \nIt's essential to address sensitivity and seek professional dental care to prevent further damage \nto the tooth enamel and underlying structures. Regular dental check-ups are crucial \nfor detecting and addressing dental issues in their early stages.")
     when    
         questions.tooth_holes(False)
         questions.tooth_discoloration(False)    
@@ -81,7 +89,7 @@ dental_cavity_rule3
         questions.toothache_duration(False) 
 
 dental_cavity_rule4
-    use dental_cavity("\nThis indicates advanced dental decay or cavity formation. It's essential to seek prompt professional dental care to assess the extent of the decay and determine the appropriate treatment to prevent further damage to the tooth. Delaying treatment can lead to worsening pain, infection, and potentially the loss of the affected tooth. Regular dental check-ups are crucial for detecting and addressing dental issues in their early stages.")
+    use dental_cavity("\nThis indicates advanced dental decay or cavity formation. \nIt's essential to seek prompt professional dental care to assess the extent of the decay and determine the \nappropriate treatment to prevent further damage to the tooth. \nDelaying treatment can lead to worsening pain, infection, \nand potentially the loss of the affected tooth. Regular dental check-ups are crucial for detecting and \naddressing dental issues in their early stages.")
     when    
         questions.tooth_holes(True)
         questions.tooth_discoloration(False)    
@@ -90,7 +98,7 @@ dental_cavity_rule4
         questions.toothache_duration(True) 
 
 dental_cavity_rule5
-    use dental_cavity("\nThis indicates an advanced dental decay or cavity formation. It's essential to seek prompt professional dental care to assess the extent of the decay and determine the appropriate treatment to prevent further damage to the tooth. Delaying treatment can lead to worsening pain, infection, and potentially the loss of the affected tooth. Regular dental check-ups are crucial for detecting and addressing dental issues in their early stages.")
+    use dental_cavity("\nThis indicates an advanced dental decay or cavity formation. \nIt's essential to seek prompt professional dental care to assess the extent of \nthe decay and determine the appropriate treatment to prevent further damage to the tooth. \nDelaying treatment can lead to worsening pain, infection, and potentially the loss of the affected tooth. \nRegular dental check-ups are crucial for detecting and addressing dental issues in their early stages.")
     when    
         questions.tooth_holes(True)
         questions.tooth_discoloration(True)    
@@ -121,12 +129,12 @@ discolorations_rule2
         questions.drink_black_tea(True)
 
 discolorations_rule3
-    use discoloration("\nUsing mouthwash with chlorhexidine and cetylpyridinium chloride can possibly be the reason of your discoloration teeth")
+    use discoloration("\nUsing mouthwash with chlorhexidine and cetylpyridinium chloride \ncan possibly be the reason of your discoloration teeth")
     when    
         questions.use_mouthwash(True)
 
 discolorations_rule4
-    use discoloration("\nIf the user smokes and chews tobacco but does not consume other staining substances or use specific mouthwashes, their tooth discoloration is most likely due to tobacco use. Regular brushing, flossing, and dental check-ups are essential to mitigate some discoloration. However, quitting smoking and tobacco use is the most effective way to prevent further staining and improve oral health.")
+    use discoloration("\nIf the user smokes and chews tobacco but does not consume other staining substances \nor use specific mouthwashes, their tooth discoloration is most likely due to tobacco use. \nRegular brushing, flossing, and dental check-ups are essential to mitigate some discoloration. \nHowever, quitting smoking and tobacco use is the most effective way to prevent \nfurther staining and improve oral health.")
     when    
         questions.smoke_tobacco(True)
         questions.drink_black_tea(False)
@@ -145,3 +153,107 @@ discolorations_rule6
         questions.smoke_tobacco(False)
         questions.drink_black_tea(False)
         questions.use_mouthwash(False)
+
+
+#PreImplantitis Rules------------------------------------------------
+
+
+preImplantitis_rule1
+    use pre_implantitis("\nIt indicates a potential issue with the implant or surrounding tissues. \nIn this case, it's crucial for the patient to see their dentist or periodontist promptly. \nFurther examination will help identify the cause of symptoms and guide appropriate treatment. \nThis may involve adjusting the implant, addressing infection, or promoting gum tissue regeneration \nto ensure the implant's long-term success.")
+    when    
+        questions.is_pain(True)
+        questions.is_swelling(False)
+        questions.is_redness(False)
+        questions.is_bleeding(True)
+        questions.is_pus(False)
+        questions.is_gum_recession(True)
+
+preImplantitis_rule2
+    use pre_implantitis("\nThe presence of swelling, redness, and pus indicates an active \ninfection or inflammation around the dental implant. \nPrompt evaluation and treatment by a dentist or \nperiodontist are crucial to prevent further complications. \nTreatment may involve antibiotics, cleaning the implant site, \nor surgical intervention to address the underlying issue and ensure the implant's long-term success.")
+    when    
+        questions.is_pain(False)
+        questions.is_swelling(True)
+        questions.is_redness(True)
+        questions.is_bleeding(False)
+        questions.is_pus(True)
+        questions.is_gum_recession(False)
+
+preImplantitis_rule3
+    use pre_implantitis("\nThese symptoms suggest a severe infection or inflammation, requiring immediate evaluation \nby a dentist or periodontist to prevent complications like implant failure or bone loss. \nTreatment may include antibiotics, thorough cleaning, and potentially surgery to address the infection and promote tissue healing.")
+    when    
+        questions.is_pain(True)
+        questions.is_swelling(True)
+        questions.is_redness(True)
+        questions.is_bleeding(True)
+        questions.is_pus(True)
+        questions.is_gum_recession(True)
+
+preImplantitis_rule4
+    use pre_implantitis("\nNo PreImplantitis Detected")
+    when    
+        questions.is_pain(False)
+        questions.is_swelling(False)
+        questions.is_redness(False)
+        questions.is_bleeding(False)
+        questions.is_pus(False)
+        questions.is_gum_recession(False)
+
+preImplantitis_rule5
+    use pre_implantitis("\nPain alone may signal nerve irritation or mechanical issues. \nSeeing a dentist promptly is essential to assess the implant's stability and tissue health. \nThey'll identify the cause and suggest appropriate management, which could involve adjustments or interventions.")
+    when    
+        questions.is_pain(True)
+        questions.is_swelling(False)
+        questions.is_redness(False)
+        questions.is_bleeding(False)
+        questions.is_pus(False)
+        questions.is_gum_recession(False)
+
+preImplantitis_rule6
+    use pre_implantitis("\nIf swelling is the sole symptom without pain, redness, bleeding, pus, or gum recession \naround the dental implant site, it could indicate a localized inflammatory \nresponse or a minor infection.")
+    when    
+        questions.is_pain(False)
+        questions.is_swelling(True)
+        questions.is_redness(False)
+        questions.is_bleeding(False)
+        questions.is_pus(False)
+        questions.is_gum_recession(False)
+
+preImplantitis_rule7
+    use pre_implantitis("\nIf redness is the only symptom present without pain, swelling, bleeding, pus, or \ngum recession around the dental implant site, it suggests localized inflammation or irritation.")
+    when    
+        questions.is_pain(False)
+        questions.is_swelling(False)
+        questions.is_redness(True)
+        questions.is_bleeding(False)
+        questions.is_pus(False)
+        questions.is_gum_recession(False)
+
+preImplantitis_rule8
+    use pre_implantitis("\nIf bleeding is the sole symptom without pain, swelling, redness, pus, or gum recession around the dental implant site, \nit could indicate localized gum irritation or inflammation.")
+    when    
+        questions.is_pain(False)
+        questions.is_swelling(False)
+        questions.is_redness(False)
+        questions.is_bleeding(True)
+        questions.is_pus(False)
+        questions.is_gum_recession(False)
+
+preImplantitis_rule9
+    use pre_implantitis("\nIf pus is the only symptom present without pain, swelling, redness, \nbleeding, or gum recession around the dental implant site, \nit suggests an active localized infection.")
+    when    
+        questions.is_pain(False)
+        questions.is_swelling(False)
+        questions.is_redness(False)
+        questions.is_bleeding(False)
+        questions.is_pus(True)
+        questions.is_gum_recession(False)
+
+preImplantitis_rule10
+    use pre_implantitis("\nGum recession alone may signal a separate issue or complication related to the implant.\n Consulting with a dentist is important to identify the cause and ensure proper management.")
+    when    
+        questions.is_pain(False)
+        questions.is_swelling(False)
+        questions.is_redness(False)
+        questions.is_bleeding(False)
+        questions.is_pus(False)
+        questions.is_gum_recession(True)
